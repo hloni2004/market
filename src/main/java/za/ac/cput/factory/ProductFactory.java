@@ -4,10 +4,7 @@ import za.ac.cput.domain.Product;
 import za.ac.cput.domain.Student;
 import za.ac.cput.util.Helper;
 
-/**
- * ProductFactory is responsible for creating valid Product instances
- * using the Builder pattern.
- */
+
 public class ProductFactory {
 
     public static Product createProduct(

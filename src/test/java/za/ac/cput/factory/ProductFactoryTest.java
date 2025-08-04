@@ -10,7 +10,7 @@ class ProductFactoryTest {
 
     @Test
     void createProduct() {
-        // Create a dummy Student (seller) to pass in
+
         Student seller = new Student.Builder()
 
                 .setFirstName("John")

@@ -20,11 +20,9 @@ public class Administrator {
     @Column(name = "password")
     private String password;
 
-    // Required no-arg constructor for JPA
     protected Administrator() {
     }
 
-    // Builder constructor
     protected Administrator(Builder builder) {
         this.adminId = builder.adminId;
         this.username = builder.username;
@@ -32,7 +30,6 @@ public class Administrator {
         this.password = builder.password;
     }
 
-    // Getters
     public Long getAdminId() {
         return adminId;
     }
@@ -59,17 +56,11 @@ public class Administrator {
                 '}';
     }
 
-    // Builder class
     public static class Builder {
         private Long adminId;
         private String username;
         private String email;
         private String password;
-
-//        public Builder setAdminId(Long adminId) {
-//            this.adminId = adminId;
-//            return this;
-//        }
 
         public Builder setUsername(String username) {
             this.username = username;
