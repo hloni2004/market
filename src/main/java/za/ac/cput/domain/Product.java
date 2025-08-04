@@ -33,7 +33,7 @@ public class Product {
     private String productImageUrl;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id")
+    @JoinColumn(name = "seller_id" ,nullable = false)
     private Student seller;
 
     @OneToOne(mappedBy = "product",cascade = CascadeType.ALL)

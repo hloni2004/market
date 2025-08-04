@@ -25,7 +25,7 @@ public class AdministratorService implements IAdministratorService {
 
     @Override
     public Administrator create(Administrator administrator) {
-       return administratorRepository.save(administrator);
+       return this.administratorRepository.save(administrator);
     }
 
     @Override

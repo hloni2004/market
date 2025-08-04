@@ -16,13 +16,13 @@ public class Student {
     @Column(name = "last_name", nullable = false)
     protected String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = false)
     protected String email;
 
     @Column(name = "password", nullable = false)
     protected String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL ,  orphanRemoval = true)
     @JoinColumn(name = "residence_id")
     protected Residence residence;
 

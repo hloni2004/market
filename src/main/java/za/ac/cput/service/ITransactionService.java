@@ -4,8 +4,8 @@ import za.ac.cput.domain.Transaction;
 
 import java.util.List;
 
-public interface ITransactionService extends IService<Transaction, Integer> {
+public interface ITransactionService extends IService<Transaction, Long> {
 
-    boolean delete(String id);
+    boolean delete(Long id);
     List<Transaction> getAll();
 }
