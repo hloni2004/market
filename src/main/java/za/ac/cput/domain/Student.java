@@ -1,5 +1,6 @@
 package za.ac.cput.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -22,14 +23,16 @@ public class Student {
     @Column(name = "password", nullable = false)
     protected String password;
 
-    @OneToOne(cascade = CascadeType.ALL ,  orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "residence_id")
     protected Residence residence;
 
     @OneToMany(mappedBy = "seller")
+    @JsonManagedReference("student-products")
     protected List<Product> productForSale;
 
     @OneToMany(mappedBy = "buyer")
+    @JsonManagedReference("student-transactions")
     protected List<Transaction> purchases;
 
     public Student() {}
@@ -100,11 +103,6 @@ public class Student {
         private Residence residence;
         private List<Product> productForSale;
         private List<Transaction> purchases;
-
-//        public Builder setStudentId(String studentId) {
-//            this.studentId = studentId;
-//            return this;
-//        }
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
