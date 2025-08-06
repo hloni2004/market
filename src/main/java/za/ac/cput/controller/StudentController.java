@@ -8,7 +8,7 @@ import za.ac.cput.service.StudentService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/student")
+@RequestMapping("/student")
 public class StudentController {
 
     private final StudentService studentService;
