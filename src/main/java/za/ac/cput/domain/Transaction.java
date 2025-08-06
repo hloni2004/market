@@ -1,5 +1,6 @@
 package za.ac.cput.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import za.ac.cput.domain.Student;
 
@@ -33,11 +34,11 @@ public class Transaction {
 
     @OneToOne
     @JoinColumn(name = "product_id", referencedColumnName = "product_id")
-
     protected Product product;
 
     @ManyToOne
     @JoinColumn(name = "buyer_id")
+    @JsonBackReference("student-transactions")
     protected Student buyer;
 
     protected Transaction() {}
@@ -111,11 +112,6 @@ public class Transaction {
         protected double price;
         protected Product product;
         protected Student buyer;
-
-//        public Builder setTransactionId(Long transactionId) {
-//            this.transactionId = transactionId;
-//            return this;
-//        }
 
         public Builder setImageOfProduct(String imageOfProduct) {
             this.imageOfProduct = imageOfProduct;

@@ -1,5 +1,6 @@
 package za.ac.cput.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -33,10 +34,11 @@ public class Product {
     private String productImageUrl;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id" ,nullable = false)
+    @JoinColumn(name = "seller_id", nullable = false)
+    @JsonBackReference("student-products")
     private Student seller;
 
-    @OneToOne(mappedBy = "product",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     private Transaction transaction;
 
     public Product() {}
@@ -121,11 +123,6 @@ public class Product {
         private String productImageUrl;
         private Student seller;
         private Transaction transaction;
-
-//        public Builder setProductId(Long productId) {
-//            this.productId = productId;
-//            return this;
-//        }
 
         public Builder setProductName(String productName) {
             this.productName = productName;
