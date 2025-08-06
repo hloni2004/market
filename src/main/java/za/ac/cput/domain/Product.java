@@ -1,6 +1,6 @@
 package za.ac.cput.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -35,7 +35,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "seller_id", nullable = false)
-    @JsonBackReference("student-products")
+    @JsonIgnoreProperties({"productForSale", "purchases"})
     private Student seller;
 
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
@@ -123,6 +123,11 @@ public class Product {
         private String productImageUrl;
         private Student seller;
         private Transaction transaction;
+
+        public Builder setProductId(Long productId) {
+            this.productId = productId;
+            return this;
+        }
 
         public Builder setProductName(String productName) {
             this.productName = productName;

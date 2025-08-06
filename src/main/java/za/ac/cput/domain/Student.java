@@ -1,6 +1,6 @@
 package za.ac.cput.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -28,11 +28,11 @@ public class Student {
     protected Residence residence;
 
     @OneToMany(mappedBy = "seller")
-    @JsonManagedReference("student-products")
+    @JsonIgnoreProperties("seller")
     protected List<Product> productForSale;
 
     @OneToMany(mappedBy = "buyer")
-    @JsonManagedReference("student-transactions")
+    @JsonIgnoreProperties("buyer")
     protected List<Transaction> purchases;
 
     public Student() {}
@@ -103,6 +103,11 @@ public class Student {
         private Residence residence;
         private List<Product> productForSale;
         private List<Transaction> purchases;
+
+        public Builder setStudentId(Long studentId) {
+            this.studentId = studentId;
+            return this;
+        }
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
